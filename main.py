@@ -9,7 +9,6 @@ with open(join(abspath(dirname(__file__)), "token"), "r") as token_file:
     token = token_file.read()
 
 updater = Updater(token=token, use_context=True)
-
 dispatcher = updater.dispatcher
 
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -85,3 +84,4 @@ message_handler = MessageHandler(Filters.text & (~Filters.command), process_mess
 dispatcher.add_handler(message_handler)
 
 updater.start_polling()
+updater.idle()
